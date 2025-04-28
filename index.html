@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ludo Game</title>
+  <link rel="stylesheet" href="style.css">  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+  <div class="game-container">
+    <h1>Ludo Game</h1>
+    
+    <div class="game-controls">
+      <button id="rollDice" class="btn">Roll Dice</button>
+      <div id="diceResult" class="dice">
+        <i class="fas fa-dice-one"></i>
+      </div>
+      <div id="turnIndicator">Current Turn: <span id="currentPlayer">Red</span></div>
+    </div>
+    
+    <div class="ludoContainer">
+      <div id="ludoBoard">
+        <!-- Red Home -->
+        <div id="red-home" class="home red-bg">
+          <div class="token red-token" id="red-token-1" data-token-id="1" data-color="red"></div>
+          <div class="token red-token" id="red-token-2" data-token-id="2" data-color="red"></div>
+          <div class="token red-token" id="red-token-3" data-token-id="3" data-color="red"></div>
+          <div class="token red-token" id="red-token-4" data-token-id="4" data-color="red"></div>
+        </div>
+        
+        <!-- Green Path -->
+        <div id="green-path" class="path vertical-path">
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box green-path-end"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+        </div>
+        
+        <!-- Green Home -->
+        <div id="green-home" class="home green-bg">
+          <div class="token green-token" id="green-token-1" data-token-id="1" data-color="green"></div>
+          <div class="token green-token" id="green-token-2" data-token-id="2" data-color="green"></div>
+          <div class="token green-token" id="green-token-3" data-token-id="3" data-color="green"></div>
+          <div class="token green-token" id="green-token-4" data-token-id="4" data-color="green"></div>
+        </div>
+        
+        <!-- Red Path -->
+        <div id="red-path" class="path horizontal-path">
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box red-path-end"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+        </div>
+        
+        <!-- Center Win Zone -->
+        <div id="win-zone"></div>
+        
+        <!-- Yellow Path -->
+        <div id="yellow-path" class="path horizontal-path">
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box yellow-path-end"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+        </div>
+        
+        <!-- Blue Home -->
+        <div id="blue-home" class="home blue-bg">
+          <div class="token blue-token" id="blue-token-1" data-token-id="1" data-color="blue"></div>
+          <div class="token blue-token" id="blue-token-2" data-token-id="2" data-color="blue"></div>
+          <div class="token blue-token" id="blue-token-3" data-token-id="3" data-color="blue"></div>
+          <div class="token blue-token" id="blue-token-4" data-token-id="4" data-color="blue"></div>
+        </div>
+        
+        <!-- Blue Path -->
+        <div id="blue-path" class="path vertical-path">
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box blue-path-end"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+        </div>
+        
+        <!-- Yellow Home -->
+        <div id="yellow-home" class="home yellow-bg">
+          <div class="token yellow-token" id="yellow-token-1" data-token-id="1" data-color="yellow"></div>
+          <div class="token yellow-token" id="yellow-token-2" data-token-id="2" data-color="yellow"></div>
+          <div class="token yellow-token" id="yellow-token-3" data-token-id="3" data-color="yellow"></div>
+          <div class="token yellow-token" id="yellow-token-4" data-token-id="4" data-color="yellow"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="game-status">
+      <div class="player-status red-player">Red: <span id="red-status">0/4</span></div>
+      <div class="player-status green-player">Green: <span id="green-status">0/4</span></div>
+      <div class="player-status blue-player">Blue: <span id="blue-status">0/4</span></div>
+      <div class="player-status yellow-player">Yellow: <span id="yellow-status">0/4</span></div>
+    </div>
+    
+    <div class="game-message" id="gameMessage"></div>
+  </div>
+  
+  <script src="script.js"></script>
+</body>
+</html>
